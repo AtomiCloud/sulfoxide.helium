@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.0.1...v1.0.2) (2023-09-27)
+
+
+### 🐛 Bug Fixes
+
+* missing config and config file ([ec21ef9](https://github.com/AtomiCloud/sulfoxide.helium/commit/ec21ef9f51fa572c583663cbfe6d8059596a3d40))
+
 ## [1.0.1](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.0.0...v1.0.1) (2023-09-27)
 
 

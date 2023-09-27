@@ -7,7 +7,7 @@ pre-commit-lib.run {
     # formatter
     treefmt = {
       enable = true;
-      excludes = [ "chart/.*(yaml|yml)" "chart/README.md" ];
+      excludes = [ "chart/.*(yaml|yml)" "chart/README.md" "Changelog.md" "docs/developer/CommitConventions.md" ];
     };
 
     # linters From https://github.com/cachix/pre-commit-hooks.nix
@@ -19,7 +19,7 @@ pre-commit-lib.run {
       enable = true;
       name = "Secrets Scanning (Past Commits)";
       description = "Scan for possible secrets in past commits";
-      entry = "${packages.infisical}/bin/infisical scan -v";
+      entry = "${packages.infisical}/bin/infisical scan . -v";
       language = "system";
       pass_filenames = false;
     };

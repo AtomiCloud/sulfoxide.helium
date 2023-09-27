@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.0.2...v1.0.3) (2023-09-27)
+
+
+### 🐛 Bug Fixes
+
+* incorrect k3d configuration ([f796e70](https://github.com/AtomiCloud/sulfoxide.helium/commit/f796e705dd2500fdffa11ea7d6d0a3226191af1c))
+
 ## [1.0.2](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.0.1...v1.0.2) (2023-09-27)
 
 

@@ -1,0 +1,53 @@
+{{- range $lk, $lv := .Values.connector.clusters }}
+{{- range $ck, $cv := $lv }}
+{{- if $cv.aoa.enable }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ $lk }}-{{ $ck }}-bootstap
+  annotations:
+    {{- include "atomi-deployment-platform.annotations" $ | nindent 4 }}
+    "helm.sh/hook": post-install, post-upgrade
+    "helm.sh/hook-weight": "2"
+  labels:
+    {{- include "atomi-deployment-platform.labels" $ | nindent 4 }}
+spec:
+  project: default
+  source:
+    repoURL: {{ $cv.aoa.repo }}
+    targetRevision: {{ $cv.aoa.version }}
+    path: {{ $cv.aoa.path }}
+    helm:
+      ignoreMissingValueFiles: false
+      parameters: []
+      passCredentials: false
+      releaseName: {{ $cv.aoa.release }}
+      skipCrds: false
+      valueFiles:
+        {{- toYaml $cv.aoa.values | nindent 8 }}
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: {{ $.Release.Namespace }}
+  # Sync policy
+  syncPolicy:
+    automated: # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.
+      prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).
+      selfHeal: true # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected ( false by default ).
+      allowEmpty: true # Allows deleting all application resources during automatic syncing ( false by default ).
+    syncOptions: # Sync options which modifies sync behavior
+      - CreateNamespace=false # Namespace Auto-Creation ensures that namespace specified as the application destination exists in the destination cluster.
+      - PrunePropagationPolicy=foreground # Supported policies are background, foreground and orphan.
+      - PruneLast=true # Allow the ability for resource pruning to happen as a final, implicit wave of a sync operation
+      - Replace=false # Because kubectl adds metadata that will cross the limit allowed by Kubernetes, Replace overcomes this limitation.
+      - ServerSideApply=false
+    retry:
+      limit: 10
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
+  revisionHistoryLimit: {{ $.Values.revisionLimit }}
+  {{- end }}
+---
+{{- end }}
+{{- end }}

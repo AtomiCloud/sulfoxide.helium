@@ -1,0 +1,57 @@
+{{- if .Values.auth.external.enable }}
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: {{ .Release.Name -}}-external-secret
+  annotations:
+   {{- include "atomi-deployment-platform.annotations" . | nindent 4 }}
+    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook-weight": "-2"
+  labels:
+    {{- include "atomi-deployment-platform.labels" . | nindent 4 }}
+    argocd.argoproj.io/secret-type: repo-creds
+spec:
+  refreshInterval: {{ .Values.auth.external.refreshInterval }}
+  secretStoreRef:
+    name: {{ .Values.auth.external.secretStore.name }}
+    kind: {{ .Values.auth.external.secretStore.kind }}
+  target:
+    name: {{ .Values.auth.secretName }}
+    creationPolicy: {{ .Values.auth.external.policy.creation }}
+    deletionPolicy: {{ .Values.auth.external.policy.deletion }}
+  data:
+    - secretKey: url
+      remoteRef:
+        key: {{ .Values.auth.external.remoteSecretName }}
+        property: url
+    - secretKey: type
+      remoteRef:
+        key: {{ .Values.auth.external.remoteSecretName }}
+        property: type
+    - secretKey: password
+      remoteRef:
+        key: {{ .Values.auth.external.remoteSecretName }}
+        property: password
+    - secretKey: username
+      remoteRef:
+        key: {{ .Values.auth.external.remoteSecretName }}
+        property: username
+{{- end }}
+---
+{{- if .Values.auth.internal.enable }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ .Values.auth.secretName }}
+  annotations:
+     {{- include "atomi-deployment-platform.annotations" . | nindent 4 }}
+    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook-weight": "-2"
+  labels:
+    {{- include "atomi-deployment-platform.labels" . | nindent 4 }}
+data:
+  username: {{ b64enc .Values.auth.internal.username }}
+  password: {{ b64enc .Values.auth.internal.password }}
+  url: {{ b64enc .Values.auth.internal.url }}
+  type: {{ b64enc .Values.auth.internal.type }}
+{{- end }}

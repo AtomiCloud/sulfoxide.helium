@@ -1,6 +1,9 @@
 dependencies:
 - name: argo-cd
   repository: https://argoproj.github.io/argo-helm
-  version: 5.42.0
-digest: sha256:2b7ee3fa38fe1cd3ca600ad8490d1afca76594777292613b9bc77e1243d251f2
-generated: "2023-07-30T19:44:55.403863+08:00"
+  version: 5.46.7
+- name: sulfoxide-bromine
+  repository: oci://ghcr.io/atomicloud/sulfoxide.bromine
+  version: 1.1.0
+digest: sha256:5deffffd581e335f91f8554162e99beb8fc0054bb17aeba67ff7644c1c7040fb
+generated: "2023-09-30T21:00:08.923593+08:00"

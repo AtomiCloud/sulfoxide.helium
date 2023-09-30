@@ -1,10 +1,13 @@
 apiVersion: v2
-name: atomi-deployment-platform
+name: sulfoxide-helium
 description: AtomiCloud's Deployment Platform via ArgoCD
 type: application
 version: 1.0.3
-appVersion: "5.42.0"
+appVersion: "5.46.7"
 dependencies:
   - name: argo-cd
-    version: 5.42.0
+    version: 5.46.7
     repository: https://argoproj.github.io/argo-helm
+  - name: sulfoxide-bromine
+    version: 1.1.0
+    repository: oci://ghcr.io/atomicloud/sulfoxide.bromine

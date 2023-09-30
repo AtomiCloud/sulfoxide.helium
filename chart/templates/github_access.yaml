@@ -1,57 +1,53 @@
-{{- if .Values.auth.external.enable }}
+{{- if .Values.github.external.enable }}
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
   name: {{ .Release.Name -}}-external-secret
   annotations:
-   {{- include "atomi-deployment-platform.annotations" . | nindent 4 }}
+   {{- include "sulfoxide-helium.annotations" . | nindent 4 }}
     "helm.sh/hook": pre-install,pre-upgrade
     "helm.sh/hook-weight": "-2"
   labels:
-    {{- include "atomi-deployment-platform.labels" . | nindent 4 }}
+    {{- include "sulfoxide-helium.labels" . | nindent 4 }}
     argocd.argoproj.io/secret-type: repo-creds
 spec:
-  refreshInterval: {{ .Values.auth.external.refreshInterval }}
+  refreshInterval: {{ .Values.github.external.refreshInterval }}
   secretStoreRef:
-    name: {{ .Values.auth.external.secretStore.name }}
-    kind: {{ .Values.auth.external.secretStore.kind }}
+    name: {{ .Values.github.external.secretStore.name }}
+    kind: {{ .Values.github.external.secretStore.kind }}
   target:
-    name: {{ .Values.auth.secretName }}
-    creationPolicy: {{ .Values.auth.external.policy.creation }}
-    deletionPolicy: {{ .Values.auth.external.policy.deletion }}
+    name: {{ .Values.github.secretName }}
+    creationPolicy: {{ .Values.github.external.policy.creation }}
+    deletionPolicy: {{ .Values.github.external.policy.deletion }}
+    template:
+      data:
+        username: "{{ `{{ .username }}` }}"
+        password: "{{ `{{ .password }}` }}"
+        url: {{ .Values.github.url }}
+        type: {{ .Values.github.type }}
   data:
-    - secretKey: url
-      remoteRef:
-        key: {{ .Values.auth.external.remoteSecretName }}
-        property: url
-    - secretKey: type
-      remoteRef:
-        key: {{ .Values.auth.external.remoteSecretName }}
-        property: type
     - secretKey: password
       remoteRef:
-        key: {{ .Values.auth.external.remoteSecretName }}
-        property: password
+        key: {{ .Values.github.external.passwordRef }}
     - secretKey: username
       remoteRef:
-        key: {{ .Values.auth.external.remoteSecretName }}
-        property: username
+        key: {{ .Values.github.external.usernameRef }}
 {{- end }}
 ---
-{{- if .Values.auth.internal.enable }}
+{{- if .Values.github.internal.enable }}
 apiVersion: v1
 kind: Secret
 metadata:
-  name: {{ .Values.auth.secretName }}
+  name: {{ .Values.github.secretName }}
   annotations:
-     {{- include "atomi-deployment-platform.annotations" . | nindent 4 }}
+     {{- include "sulfoxide-helium.annotations" . | nindent 4 }}
     "helm.sh/hook": pre-install,pre-upgrade
     "helm.sh/hook-weight": "-2"
   labels:
-    {{- include "atomi-deployment-platform.labels" . | nindent 4 }}
+    {{- include "sulfoxide-helium.labels" . | nindent 4 }}
 data:
-  username: {{ b64enc .Values.auth.internal.username }}
-  password: {{ b64enc .Values.auth.internal.password }}
-  url: {{ b64enc .Values.auth.internal.url }}
-  type: {{ b64enc .Values.auth.internal.type }}
+  username: {{ b64enc .Values.github.internal.username }}
+  password: {{ b64enc .Values.github.internal.password }}
+  url: {{ b64enc .Values.github.url }}
+  type: {{ b64enc .Values.github.type }}
 {{- end }}

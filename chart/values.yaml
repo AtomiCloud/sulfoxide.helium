@@ -1,10 +1,10 @@
+# -- AtomiCloud Service Tree. See [ServiceTree](https://atomicloud.larksuite.com/wiki/OkfJwTXGFiMJkrk6W3RuwRrZs64?theme=DARK&contentTheme=DARK#MHw5d76uDo2tBLx86cduFQMRsBb)
 serviceTree:
-  landscape: suicune
-  cluster: opal
-  platform: systems
-  service: deployment-platform
-  module: argocd
+  platform: sulfoxide
+  service: chlorine
+  layer:  "1"
 
+# -- ArgoCD Specific configuration. See [ArgoCD Helm Documentation](https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd)
 argo-cd:
   configs:
     cm:
@@ -18,82 +18,142 @@ argo-cd:
   dex:
     enabled: false
 
+# -- Create SecretStore via secret of secrets pattern
+sulfoxide-bromine:
+  # -- Store name to create
+  storeName: doppler
+  # -- Secret of Secrets reference
+  rootSecret:
+    # -- DOPPLER Token Reference
+    ref: "SULFOXIDE_HELIUM"
 
-
+# -- Enable Kustomize Application
 kustomize: true
+# -- Enable JSONNET Application
 jsonnet: true
+# -- Enable Helm Application
 helm: true
+# -- Enable Admin Access
 admin: true
+# -- Enable Exec in ArgoCD
 exec: true
+# -- Enable waiting in sync-waves
 applicationWait: true
-#banner: "hello everyone!"
+# -- Banner to show in ArgoCD UI
+banner: ""
 
+# -- OTEL Collector Endpoint
 otelAddress: ""
 
+# -- Projects to create in ArgoCD
 projects:
   bootstrap:
     desc: Bootstrap Project used to setup the cluster
 
+# -- URL of ArgoCD endpoint
 url: https://deploy.atomi.cloud
 
+# -- RBAC Setup
 rbac:
+  # -- Enable of RBAC
   enable: true
+  # -- Group claim to use for OIDC for RBAC
   group: https://atomi.cloud/roles
+  # -- Name of the OIDC Provider
   name: Atomi
+  # -- Name of OIDC Issuer
   issuer: https://atomicloud-internal.jp.auth0.com/
+  # -- Client ID for OIDC
   clientID: ""
+  # -- Scopes to request from OIDC
   requestedScopes:
     - openid
     - profile
     - email
     - https://atomi.cloud/roles
 
-#
-auth:
+# -- GitHub Auth Setup
+github:
+  # -- Secret name of Github Auth
   secretName: argo-cd-creds
+  # -- ArgoCD Credential Type
+  url: ""
+  # -- ArgoCD Credential Type
+  type: ""
+  # -- Internal Secret, Hard coded secrets
   internal:
+    # -- Enable Internal Secret
     enable: false
+    # -- Username for Github Auth
     username: ""
+    # -- Password for Github Auth
     password: ""
-    url: ""
-    type: ""
+  # -- External Secrets
   external:
+    # -- Enable External Secrets
     enable: true
+    # -- Refresh Interval for fetching the secret from remote
     refreshInterval: 1h
-    remoteSecretName: /suicune/github/credentials
+    # -- Username Remote Reference
+    usernameRef: ""
+    # -- Password Remote Reference
+    passwordRef: ""
     secretStore:
-      name: aws-ssm-secret-store
-      kind: ClusterSecretStore
+      # -- Name of the Secret Store
+      name: doppler
+      # -- Kind of the Secret Store: `ClusterSecretStore` or `SecretStore`
+      kind: SecretStore
+    # -- External Secret Policy
     policy:
+      # -- Creation Policy
       creation: Owner
+      # -- Deletion Policy
       deletion: Retain
+
+# -- SSO Secret using OIDC
 sso:
+  # -- Secret Name of SSO Secret
   secretName: argo-cd-sso-secret
+  # -- Internal Secret, Hard coded secrets
   internal:
+    # -- Enable Internal Secret
     enable: false
+    # -- Secret for SSO
     secret: ""
+  # -- External Secret Configuration
   external:
+    # -- Enable External Secret
     enable: true
+    # -- Refresh Interval for fetching the secret from remote
     refreshInterval: 1h
+    # -- Secret Remote Reference for OIDC Client Secret
     remoteSecretName: /suicune/auth0/client_secret
     secretStore:
-      name: aws-ssm-secret-store
-      kind: ClusterSecretStore
+      # -- Name of the Secret Store
+      name: doppler
+      # -- Kind of the Secret Store: `ClusterSecretStore` or `SecretStore`
+      kind: ClusterStore
+    # -- External Secret Policy
     policy:
+      # -- Creation policy
       creation: Owner
+      # -- Deletion policy
       deletion: Retain
+
+# -- Connectors to other cluster
 connector:
   secretStore:
     # -- Name of the Secret Store
-    name: awsssm-store
-    # -- Kind of the Secret Store: ClusterSecretStore or SecretStore
-    kind: ClusterSecretStore
-  # -- Secret policy
+    name: doppler
+    # -- Kind of the Secret Store: `ClusterSecretStore` or `SecretStore`
+    kind: SecretStore
+  # -- External Secret Policy
   policy:
     # -- Creation policy
     creation: Owner
     # -- Deletion policy
     deletion: Retain
+  # -- Clusters to connect to
   clusters: {}
 #    pichu:
 #      opal:

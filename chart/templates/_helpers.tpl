@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "atomi-deployment-platform.name" -}}
+{{- define "sulfoxide-helium.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "atomi-deployment-platform.fullname" -}}
+{{- define "sulfoxide-helium.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,19 +26,19 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "atomi-deployment-platform.chart" -}}
+{{- define "sulfoxide-helium.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "atomi-deployment-platform.labels" -}}
-helm.sh/chart: {{ include "atomi-deployment-platform.chart" . }}
+{{- define "sulfoxide-helium.labels" -}}
+helm.sh/chart: {{ include "sulfoxide-helium.chart" . }}
 {{- range $k, $v := .Values.serviceTree }}
 "atomi.cloud/{{ $k }}": "{{ $v }}"
 {{- end }}
-{{ include "atomi-deployment-platform.selectorLabels" . }}
+{{ include "sulfoxide-helium.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -48,8 +48,8 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Common annotations
 */}}
-{{- define "atomi-deployment-platform.annotations" -}}
-helm.sh/chart: {{ include "atomi-deployment-platform.chart" . }}
+{{- define "sulfoxide-helium.annotations" -}}
+helm.sh/chart: {{ include "sulfoxide-helium.chart" . }}
 {{- range $k, $v := .Values.serviceTree }}
 "atomi.cloud/{{ $k }}": "{{ $v }}"
 {{- end }}
@@ -58,17 +58,17 @@ helm.sh/chart: {{ include "atomi-deployment-platform.chart" . }}
 {{/*
 Selector labels
 */}}
-{{- define "atomi-deployment-platform.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "atomi-deployment-platform.name" . }}
+{{- define "sulfoxide-helium.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "sulfoxide-helium.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "atomi-deployment-platform.serviceAccountName" -}}
+{{- define "sulfoxide-helium.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "atomi-deployment-platform.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "sulfoxide-helium.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}

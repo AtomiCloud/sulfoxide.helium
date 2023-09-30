@@ -3,10 +3,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: {{ $k }}
-  labels:
-    {{ include "atomi-deployment-platform.labels" $ | nindent 4 }}
-  annotations:
-    {{ include "atomi-deployment-platform.annotations" $ | nindent 4 }}
+  labels: {{- include "sulfoxide-helium.labels" $ | nindent 4 }}
+  annotations: {{- include "sulfoxide-helium.annotations" $ | nindent 4 }}
     "helm.sh/hook": post-install, post-upgrade
     "helm.sh/hook-weight": "1"
 spec:

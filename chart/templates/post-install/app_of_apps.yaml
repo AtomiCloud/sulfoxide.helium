@@ -6,11 +6,11 @@ kind: Application
 metadata:
   name: {{ $lk }}-{{ $ck }}-bootstap
   annotations:
-    {{- include "atomi-deployment-platform.annotations" $ | nindent 4 }}
+    {{- include "sulfoxide-helium.annotations" $ | nindent 4 }}
     "helm.sh/hook": post-install, post-upgrade
     "helm.sh/hook-weight": "2"
   labels:
-    {{- include "atomi-deployment-platform.labels" $ | nindent 4 }}
+    {{- include "sulfoxide-helium.labels" $ | nindent 4 }}
 spec:
   project: default
   source:

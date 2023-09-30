@@ -1,30 +1,6 @@
 serviceTree:
   landscape: suicune
   cluster: opal-ruby
-  platform: systems
-  service: deployment-platform
-  module: argocd
-
-argo-cd:
-  configs:
-    cm:
-      create: false
-    params:
-      create: false
-  global:
-    logging:
-      format: json
-      level: info
-  dex:
-    enabled: false
-
-kustomize: true
-jsonnet: true
-helm: true
-admin: true
-exec: true
-applicationWait: true
-#banner: "hello everyone!"
 
 otelAddress: ""
 
@@ -45,64 +21,38 @@ rbac:
     - profile
     - email
     - https://atomi.cloud/roles
-auth:
-  secretName: argo-cd-creds
-  internal:
-    enable: false
-    username: ""
-    password: ""
-    url: ""
-    type: ""
-  external:
-    enable: true
-    refreshInterval: 1h
-    remoteSecretName: /suicune/manual/argocd/github-credentials
-    secretStore:
-      name: aws-ssm-secret-store
-      kind: ClusterSecretStore
-    policy:
-      creation: Owner
-      deletion: Retain
-sso:
-  secretName: argo-cd-sso-secret
-  internal:
-    enable: false
-    secret: ""
-  external:
-    enable: true
-    refreshInterval: 1h
-    remoteSecretName: /suicune/manual/argocd/auth0-client-secret
-    secretStore:
-      name: aws-ssm-secret-store
-      kind: ClusterSecretStore
-    policy:
-      creation: Owner
-      deletion: Retain
-connector:
-  secretStore:
-    # -- Name of the Secret Store
-    name: aws-ssm-secret-store
-    # -- Kind of the Secret Store: ClusterSecretStore or SecretStore
-    kind: ClusterSecretStore
-  # -- Secret policy
-  policy:
-    # -- Creation policy
-    creation: Owner
-    # -- Deletion policy
-    deletion: Retain
 
-  clusters:
-    pichu:
-      opal:
-        # -- refresh interval for fetching the secret from remote
-        refreshInterval: 24h
-        # -- secret for the cluster
-        remoteSecretName: /suicune/auto/argocd/cluster-connector-pichu-opal
-        # -- enable App of Apps
-        aoa:
-          enable: true
-          repo: https://github.com/AtomiCloud/helm.systems_app-of-apps
-          version: HEAD
-          path: chart
-          release: pichu-opal-bootstrap
-          values: [ "values.pichu.opal.yaml" ]
+github:
+  secretName: argo-cd-creds
+  url: "https://github.com/AtomiCloud"
+  type: "helm"
+  internal:
+    enable: false
+  external:
+    enable: true
+    refreshInterval: 1h
+    usernameRef: "GITHUB_USERNAME"
+    passwordRef: "GITHUB_PASSWORD"
+
+sso:
+  internal:
+    enable: false
+  external:
+    enable: true
+    remoteSecretName: /suicune/manual/argocd/auth0-client-secret
+
+#  clusters:
+#    pichu:
+#      opal:
+#        # -- refresh interval for fetching the secret from remote
+#        refreshInterval: 24h
+#        # -- secret for the cluster
+#        remoteSecretName: /suicune/auto/argocd/cluster-connector-pichu-opal
+#        # -- enable App of Apps
+#        aoa:
+#          enable: true
+#          repo: https://github.com/AtomiCloud/helm.systems_app-of-apps
+#          version: HEAD
+#          path: chart
+#          release: pichu-opal-bootstrap
+#          values: [ "values.pichu.opal.yaml" ]

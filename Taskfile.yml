@@ -1,9 +1,10 @@
 version: "3"
 
 env:
-  RELEASE_NAME: argocd
+  RELEASE_NAME: sulfoxide-helium
 
 includes:
+  util: tasks/Taskfile.util.yaml
   suicune:opal-ruby:
     taskfile: tasks/Taskfile.cluster.yaml
     vars:
@@ -28,3 +29,14 @@ tasks:
     dir: chart
     cmds:
       - helm dependency update
+
+  latest:
+    desc: Get the latest version of Cert Manager
+    cmds:
+      - task: util:latest
+        vars:
+          REPO_NAME: argo-cd
+          REPO_URL: https://argoproj.github.io/argo-helm
+          CHART_NAME: argo-cd
+      - >-
+        echo "sulfoxide-bromine: $(skopeo list-tags docker://ghcr.io/atomicloud/sulfoxide.bromine/sulfoxide-bromine | jq -r '.Tags[]' | sort -V | tail -n 1)"

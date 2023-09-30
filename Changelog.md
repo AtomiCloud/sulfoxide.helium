@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.0.3...v1.1.0) (2023-09-30)
+
+
+### 🚀 New Features
+
+* migrate to doppler-based system ([d3dc053](https://github.com/AtomiCloud/sulfoxide.helium/commit/d3dc0539cc7d224d97831193522778e557b3113d))
+
 ## [1.0.3](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.0.2...v1.0.3) (2023-09-27)
 
 

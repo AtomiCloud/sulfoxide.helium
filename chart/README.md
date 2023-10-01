@@ -17,7 +17,7 @@ AtomiCloud's Deployment Platform via ArgoCD
 |-----|------|---------|-------------|
 | admin | bool | `true` | Enable Admin Access |
 | applicationWait | bool | `true` | Enable waiting in sync-waves |
-| argo-cd | object | `{"configs":{"cm":{"create":false},"params":{"create":false}},"dex":{"enabled":false},"global":{"logging":{"format":"json","level":"info"}}}` | ArgoCD Specific configuration. See [ArgoCD Helm Documentation](https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd) |
+| argo-cd | object | `{"configs":{"cm":{"create":false},"params":{"create":false},"rbac":{"create":false}},"dex":{"enabled":false},"global":{"logging":{"format":"json","level":"info"}}}` | ArgoCD Specific configuration. See [ArgoCD Helm Documentation](https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd) |
 | banner | string | `""` | Banner to show in ArgoCD UI |
 | connector | object | `{"clusters":{},"policy":{"creation":"Owner","deletion":"Retain"},"secretStore":{"kind":"SecretStore","name":"doppler"}}` | Connectors to other cluster |
 | connector.clusters | object | `{}` | Clusters to connect to |
@@ -58,14 +58,14 @@ AtomiCloud's Deployment Platform via ArgoCD
 | rbac.name | string | `"Atomi"` | Name of the OIDC Provider |
 | rbac.requestedScopes | list | `["openid","profile","email","https://atomi.cloud/roles"]` | Scopes to request from OIDC |
 | serviceTree | object | `{"layer":"1","platform":"sulfoxide","service":"chlorine"}` | AtomiCloud Service Tree. See [ServiceTree](https://atomicloud.larksuite.com/wiki/OkfJwTXGFiMJkrk6W3RuwRrZs64?theme=DARK&contentTheme=DARK#MHw5d76uDo2tBLx86cduFQMRsBb) |
-| sso | object | `{"external":{"enable":true,"policy":{"creation":"Owner","deletion":"Retain"},"refreshInterval":"1h","remoteSecretName":"/suicune/auth0/client_secret","secretStore":{"kind":"ClusterStore","name":"doppler"}},"internal":{"enable":false,"secret":""},"secretName":"argo-cd-sso-secret"}` | SSO Secret using OIDC |
-| sso.external | object | `{"enable":true,"policy":{"creation":"Owner","deletion":"Retain"},"refreshInterval":"1h","remoteSecretName":"/suicune/auth0/client_secret","secretStore":{"kind":"ClusterStore","name":"doppler"}}` | External Secret Configuration |
+| sso | object | `{"external":{"enable":true,"policy":{"creation":"Owner","deletion":"Retain"},"refreshInterval":"1h","remoteSecretName":"","secretStore":{"kind":"ClusterStore","name":"doppler"}},"internal":{"enable":false,"secret":""},"secretName":"argo-cd-sso-secret"}` | SSO Secret using OIDC |
+| sso.external | object | `{"enable":true,"policy":{"creation":"Owner","deletion":"Retain"},"refreshInterval":"1h","remoteSecretName":"","secretStore":{"kind":"ClusterStore","name":"doppler"}}` | External Secret Configuration |
 | sso.external.enable | bool | `true` | Enable External Secret |
 | sso.external.policy | object | `{"creation":"Owner","deletion":"Retain"}` | External Secret Policy |
 | sso.external.policy.creation | string | `"Owner"` | Creation policy |
 | sso.external.policy.deletion | string | `"Retain"` | Deletion policy |
 | sso.external.refreshInterval | string | `"1h"` | Refresh Interval for fetching the secret from remote |
-| sso.external.remoteSecretName | string | `"/suicune/auth0/client_secret"` | Secret Remote Reference for OIDC Client Secret |
+| sso.external.remoteSecretName | string | `""` | Secret Remote Reference for OIDC Client Secret |
 | sso.external.secretStore.kind | string | `"ClusterStore"` | Kind of the Secret Store: `ClusterSecretStore` or `SecretStore` |
 | sso.external.secretStore.name | string | `"doppler"` | Name of the Secret Store |
 | sso.internal | object | `{"enable":false,"secret":""}` | Internal Secret, Hard coded secrets |

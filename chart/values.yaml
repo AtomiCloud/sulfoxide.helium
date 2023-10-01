@@ -11,6 +11,8 @@ argo-cd:
       create: false
     params:
       create: false
+    rbac:
+      create: false
   global:
     logging:
       format: json
@@ -127,7 +129,7 @@ sso:
     # -- Refresh Interval for fetching the secret from remote
     refreshInterval: 1h
     # -- Secret Remote Reference for OIDC Client Secret
-    remoteSecretName: /suicune/auth0/client_secret
+    remoteSecretName: ""
     secretStore:
       # -- Name of the Secret Store
       name: doppler

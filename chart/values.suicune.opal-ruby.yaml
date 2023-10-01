@@ -31,26 +31,30 @@ github:
   external:
     enable: true
     refreshInterval: 1h
-    usernameRef: "GITHUB_USERNAME"
-    passwordRef: "GITHUB_PASSWORD"
+    usernameRef: "MANUAL_GITHUB_USERNAME"
+    passwordRef: "MANUAL_GITHUB_PASSWORD"
 
 sso:
   internal:
     enable: false
   external:
     enable: true
-    remoteSecretName: /suicune/manual/argocd/auth0-client-secret
+    remoteSecretName: "MANUAL_AUTH0_CLIENT_SECRET"
 
-#  clusters:
-#    pichu:
-#      opal:
-#        # -- refresh interval for fetching the secret from remote
-#        refreshInterval: 24h
-#        # -- secret for the cluster
-#        remoteSecretName: /suicune/auto/argocd/cluster-connector-pichu-opal
-#        # -- enable App of Apps
-#        aoa:
-#          enable: true
+connector:
+  clusters:
+    suicune:
+      opal:
+        refreshInterval: 1h
+        remoteSecretName: SUICUNE_OPAL_KUBECONFIG
+        aoa:
+          enable: false
+    entei:
+      opal:
+        refreshInterval: 1h
+        remoteSecretName: ENTEI_OPAL_KUBECONFIG
+        aoa:
+          enable: false
 #          repo: https://github.com/AtomiCloud/helm.systems_app-of-apps
 #          version: HEAD
 #          path: chart

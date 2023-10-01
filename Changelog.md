@@ -1,3 +1,10 @@
+## [1.2.0](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.1.0...v1.2.0) (2023-10-01)
+
+
+### 🚀 New Features
+
+* migrate to MANUAL_ prefix ([81171ed](https://github.com/AtomiCloud/sulfoxide.helium/commit/81171ed2325e11382af7f967a6e600cdb9737078))
+
 ## [1.1.0](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.0.3...v1.1.0) (2023-09-30)
 
 

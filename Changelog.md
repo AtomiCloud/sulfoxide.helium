@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.2.2...v1.2.3) (2023-10-05)
+
+
+### 🐛 Bug Fixes
+
+* remove kubernetes api server url ([8d3eb2b](https://github.com/AtomiCloud/sulfoxide.helium/commit/8d3eb2b9260c76df64e4cac52ec668829125281b))
+
 ## [1.2.2](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.2.1...v1.2.2) (2023-10-05)
 
 

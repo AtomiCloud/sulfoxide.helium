@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.2.1...v1.2.2) (2023-10-05)
+
+
+### 🐛 Bug Fixes
+
+* api server passthrough ([32251c9](https://github.com/AtomiCloud/sulfoxide.helium/commit/32251c9b38b79a1c29ed7b916553a0e246384302))
+
 ## [1.2.1](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.2.0...v1.2.1) (2023-10-05)
 
 

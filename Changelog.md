@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.2.0...v1.2.1) (2023-10-05)
+
+
+### 🐛 Bug Fixes
+
+* b64dec ([b999be6](https://github.com/AtomiCloud/sulfoxide.helium/commit/b999be6d0aa3ced11a26f8fe14a79003ac7177ef))
+
 ## [1.2.0](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.1.0...v1.2.0) (2023-10-01)
 
 

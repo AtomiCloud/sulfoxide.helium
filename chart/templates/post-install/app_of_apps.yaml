@@ -25,8 +25,6 @@ spec:
       skipCrds: false
       valueFiles:
         {{- toYaml $cv.aoa.values | nindent 8 }}
-      values: |
-        destination: {{ $cv.kubernetesApiServer }}
   destination:
     server: https://kubernetes.default.svc
     namespace: {{ $.Release.Namespace }}

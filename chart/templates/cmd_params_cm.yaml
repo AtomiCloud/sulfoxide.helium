@@ -12,6 +12,11 @@ data:
 
   controller.resource.health.persist: "true"
 
+  {{ $a := index .Subcharts "argo-cd" }}
+
+  repo.server: "{{ include "argo-cd.repoServer.fullname" $a  }}:8081"
+  redis.server: "{{ include "argo-cd.redis.fullname" $a }}:6379"
+
   server.insecure: "true"
   server.dex.server.plaintext: "true"
   server.dex.server.strict.tls: "false"

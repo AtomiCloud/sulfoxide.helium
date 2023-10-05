@@ -20,6 +20,9 @@ spec:
     creationPolicy: {{ .Values.github.external.policy.creation }}
     deletionPolicy: {{ .Values.github.external.policy.deletion }}
     template:
+      metadata:
+        labels:
+          argocd.argoproj.io/secret-type: repo-creds
       data:
         username: "{{ `{{ .username }}` }}"
         password: "{{ `{{ .password }}` }}"

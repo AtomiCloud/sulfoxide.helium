@@ -43,20 +43,15 @@ sso:
 
 connector:
   clusters:
-    suicune:
-      opal:
-        refreshInterval: 1h
-        remoteSecretName: SUICUNE_OPAL_KUBECONFIG
-        aoa:
-          enable: false
     entei:
       opal:
         refreshInterval: 1h
         remoteSecretName: ENTEI_OPAL_KUBECONFIG
+        kubernetesApiServerBaseDomain: kubernetes.atomi.cloud
         aoa:
-          enable: false
-#          repo: https://github.com/AtomiCloud/helm.systems_app-of-apps
-#          version: HEAD
-#          path: chart
-#          release: pichu-opal-bootstrap
-#          values: [ "values.pichu.opal.yaml" ]
+          enable: true
+          repo: https://github.com/AtomiCloud/sulfoxide.carbon
+          version: HEAD
+          path: chart
+          release: entei-opal-bootstrap
+          values: [ "values.yaml", "values.entei.opal.yaml" ]

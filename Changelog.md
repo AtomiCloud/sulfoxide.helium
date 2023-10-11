@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.2.3...v1.2.4) (2023-10-11)
+
+
+### 🐛 Bug Fixes
+
+* prune last ([b4cb258](https://github.com/AtomiCloud/sulfoxide.helium/commit/b4cb258e6b1abeebbb7e11e8b804094952bb4a5e))
+
 ## [1.2.3](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.2.2...v1.2.3) (2023-10-05)
 
 

@@ -52,5 +52,5 @@ connector:
           repo: https://github.com/AtomiCloud/sulfoxide.carbon
           version: HEAD
           path: chart
-          release: entei-opal-bootstrap
+          release: entei-opal-carbon
           values: [ "values.yaml", "values.entei.opal.yaml" ]

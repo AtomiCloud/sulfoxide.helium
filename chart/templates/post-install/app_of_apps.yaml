@@ -4,7 +4,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ $lk }}-{{ $ck }}-bootstap
+  name: {{ $lk }}-{{ $ck }}-carbon
   annotations:
     {{- include "sulfoxide-helium.annotations" $ | nindent 4 }}
     "helm.sh/hook": post-install, post-upgrade

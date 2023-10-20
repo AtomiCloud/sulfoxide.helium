@@ -1,3 +1,10 @@
+## [1.3.0](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.2.4...v1.3.0) (2023-10-20)
+
+
+### 🚀 New Features
+
+* create sulfone project ([6abfc96](https://github.com/AtomiCloud/sulfoxide.helium/commit/6abfc964177cf0e4d9cdade0081b57303a49cc39))
+
 ## [1.2.4](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.2.3...v1.2.4) (2023-10-11)
 
 

@@ -22,6 +22,9 @@ argo-cd:
 
 # -- Create SecretStore via secret of secrets pattern
 sulfoxide-bromine:
+  annotations:
+    helm.sh/hook: pre-install,pre-upgrade
+    helm.sh/weight: "-5"
   # -- Store name to create
   storeName: doppler
   # -- Secret of Secrets reference

@@ -7,6 +7,8 @@ otelAddress: ""
 projects:
   bootstrap:
     desc: Bootstrap Project used to setup the cluster
+  sulfone:
+    desc: CyanPrint - Next-generation scaffolding engine
 
 url: https://deploy.atomi.cloud
 

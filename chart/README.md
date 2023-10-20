@@ -9,7 +9,7 @@ AtomiCloud's Deployment Platform via ArgoCD
 | Repository | Name | Version |
 |------------|------|---------|
 | https://argoproj.github.io/argo-helm | argo-cd | 5.46.7 |
-| oci://ghcr.io/atomicloud/sulfoxide.bromine | sulfoxide-bromine | 1.1.0 |
+| oci://ghcr.io/atomicloud/sulfoxide.bromine | sulfoxide-bromine | 1.2.2 |
 
 ## Values
 
@@ -72,7 +72,7 @@ AtomiCloud's Deployment Platform via ArgoCD
 | sso.internal.enable | bool | `false` | Enable Internal Secret |
 | sso.internal.secret | string | `""` | Secret for SSO |
 | sso.secretName | string | `"argo-cd-sso-secret"` | Secret Name of SSO Secret |
-| sulfoxide-bromine | object | `{"rootSecret":{"ref":"SULFOXIDE_HELIUM"},"storeName":"doppler"}` | Create SecretStore via secret of secrets pattern |
+| sulfoxide-bromine | object | `{"annotations":{"helm.sh/hook":"pre-install,pre-upgrade","helm.sh/weight":"-5"},"rootSecret":{"ref":"SULFOXIDE_HELIUM"},"storeName":"doppler"}` | Create SecretStore via secret of secrets pattern |
 | sulfoxide-bromine.rootSecret | object | `{"ref":"SULFOXIDE_HELIUM"}` | Secret of Secrets reference |
 | sulfoxide-bromine.rootSecret.ref | string | `"SULFOXIDE_HELIUM"` | DOPPLER Token Reference |
 | sulfoxide-bromine.storeName | string | `"doppler"` | Store name to create |

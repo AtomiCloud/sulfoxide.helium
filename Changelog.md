@@ -1,3 +1,10 @@
+## [1.4.0](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.3.0...v1.4.0) (2023-11-18)
+
+
+### 📦 Upstreams Changes
+
+* argocd to 5.51.2 ([a7b701c](https://github.com/AtomiCloud/sulfoxide.helium/commit/a7b701c14a41c7bf9ef1be86fa39e912ffb02a48))
+
 ## [1.3.0](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.2.4...v1.3.0) (2023-10-20)
 
 

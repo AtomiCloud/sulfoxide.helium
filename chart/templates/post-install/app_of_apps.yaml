@@ -19,7 +19,9 @@ spec:
     path: {{ $cv.aoa.path }}
     helm:
       ignoreMissingValueFiles: false
-      parameters: []
+      parameters:
+        - name: "destination"
+          value: {{ $cv.destination }}
       passCredentials: false
       releaseName: {{ $cv.aoa.release }}
       skipCrds: false

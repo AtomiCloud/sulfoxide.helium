@@ -9,6 +9,8 @@ projects:
     desc: Bootstrap Project used to setup the cluster
   sulfone:
     desc: CyanPrint - Next-generation scaffolding engine
+  nitroso:
+    desc: BunnyBooker - Bunnies to help you book KTM tickets
 
 url: https://deploy.atomi.cloud
 
@@ -46,9 +48,21 @@ sso:
 connector:
   clusters:
     entei:
+      ruby:
+        refreshInterval: 1h
+        remoteSecretName: ENTEI_RUBY_KUBECONFIG
+        destination: "https://03554f79-3c01-496e-974a-6cf3a793914a.k8s.ondigitalocean.com"
+        aoa:
+          enable: true
+          repo: https://github.com/AtomiCloud/sulfoxide.carbon
+          version: HEAD
+          path: chart
+          release: entei-ruby-carbon
+          values: [ "values.yaml", "values.entei.ruby.yaml" ]
       opal:
         refreshInterval: 1h
         remoteSecretName: ENTEI_OPAL_KUBECONFIG
+        destination: "https://a931be28-153b-4a85-b40a-f47cdd828a33.k8s.ondigitalocean.com"
         aoa:
           enable: true
           repo: https://github.com/AtomiCloud/sulfoxide.carbon

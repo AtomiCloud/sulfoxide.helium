@@ -2,7 +2,7 @@ apiVersion: v2
 name: sulfoxide-helium
 description: AtomiCloud's Deployment Platform via ArgoCD
 type: application
-version: 1.4.0
+version: 1.5.0
 appVersion: "5.51.2"
 dependencies:
   - name: argo-cd

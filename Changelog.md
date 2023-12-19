@@ -1,3 +1,10 @@
+## [1.5.0](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.4.0...v1.5.0) (2023-12-19)
+
+
+### 🚀 New Features
+
+* propogate destination from helium, instead of from carbon ([29e729b](https://github.com/AtomiCloud/sulfoxide.helium/commit/29e729bb3107b025e28bcdbacc3b3a53a94e7373))
+
 ## [1.4.0](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.3.0...v1.4.0) (2023-11-18)
 
 

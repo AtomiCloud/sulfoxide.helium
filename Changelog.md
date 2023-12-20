@@ -1,3 +1,10 @@
+## [1.7.0](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.6.0...v1.7.0) (2023-12-20)
+
+
+### 🚀 New Features
+
+* add cluster-type label ([5de2f5c](https://github.com/AtomiCloud/sulfoxide.helium/commit/5de2f5c57a8d093fb6527202bbaf21b6d152714c))
+
 ## [1.6.0](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.5.0...v1.6.0) (2023-12-20)
 
 

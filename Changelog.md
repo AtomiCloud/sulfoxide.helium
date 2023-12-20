@@ -1,3 +1,10 @@
+## [1.8.0](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.7.0...v1.8.0) (2023-12-20)
+
+
+### 🚀 New Features
+
+* label cluster access to have physical ([800ae24](https://github.com/AtomiCloud/sulfoxide.helium/commit/800ae2403a8966b7bfcfca3ee204794581a89499))
+
 ## [1.7.0](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.6.0...v1.7.0) (2023-12-20)
 
 

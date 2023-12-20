@@ -5,6 +5,7 @@ env:
 
 includes:
   util: tasks/Taskfile.util.yaml
+  kubectl: tasks/Taskfile.kubectl.yaml
   suicune:opal-ruby:
     taskfile: tasks/Taskfile.cluster.yaml
     vars:

@@ -1,0 +1,17 @@
+version: "3"
+
+tasks:
+  entei:opal:
+    desc: Obtain Entei Opal Virtual Cluster KubeConfigs
+    env:
+      CLUSTER: opal
+      LANDSCAPE: entei
+    cmds:
+      - ./scripts/local/update-kubectl.sh
+  entei:ruby:
+    desc: Obtain Entei Ruby Virtual Cluster KubeConfigs
+    env:
+      CLUSTER: ruby
+      LANDSCAPE: entei
+    cmds:
+      - ./scripts/local/update-kubectl.sh

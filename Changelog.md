@@ -1,3 +1,10 @@
+## [1.6.0](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.5.0...v1.6.0) (2023-12-20)
+
+
+### 🚀 New Features
+
+* seamless configuration for pulling kubeconfig ([7509ce3](https://github.com/AtomiCloud/sulfoxide.helium/commit/7509ce3f0670153655197089247456e19b21c87d))
+
 ## [1.5.0](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.4.0...v1.5.0) (2023-12-19)
 
 

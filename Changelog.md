@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.8.0...v1.8.1) (2024-02-08)
+
+
+### 🐛 Bug Fixes
+
+* releaser ([e1e0eee](https://github.com/AtomiCloud/sulfoxide.helium/commit/e1e0eeeb4e2b80b4d4f4fcd7d1a7efbeac216ad0))
+
 ## [1.8.0](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.7.0...v1.8.0) (2023-12-20)
 
 

@@ -45,15 +45,25 @@ sso:
     enable: true
     remoteSecretName: "MANUAL_AUTH0_CLIENT_SECRET"
 
+radon:
+  enable: true
+  appName: radon
+  releaseName: radon
+  repoURL: https://github.com/AtomiCloud/sulfoxide.radon
+  targetRevision: HEAD
+  path: chart
+  values: [ "values.yaml", "values.entei.opal-ruby.yaml" ]
+
 connector:
   clusters:
     entei:
       ruby:
         refreshInterval: 1h
         remoteSecretName: ENTEI_RUBY_KUBECONFIG
-        destination: "https://03554f79-3c01-496e-974a-6cf3a793914a.k8s.ondigitalocean.com"
+        destination: "https://8f57e499-104a-437a-a4cd-04be277aa46c.k8s.ondigitalocean.com"
+        deployAppSet: false
         aoa:
-          enable: true
+          enable: false
           repo: https://github.com/AtomiCloud/sulfoxide.carbon
           version: HEAD
           path: chart
@@ -62,7 +72,8 @@ connector:
       opal:
         refreshInterval: 1h
         remoteSecretName: ENTEI_OPAL_KUBECONFIG
-        destination: "https://a931be28-153b-4a85-b40a-f47cdd828a33.k8s.ondigitalocean.com"
+        destination: "https://f88ac95c-d14a-4cdf-8e61-388baa2359d8.k8s.ondigitalocean.com"
+        deployAppSet: true
         aoa:
           enable: true
           repo: https://github.com/AtomiCloud/sulfoxide.carbon
@@ -70,3 +81,15 @@ connector:
           path: chart
           release: entei-opal-carbon
           values: [ "values.yaml", "values.entei.opal.yaml" ]
+      onyx:
+        refreshInterval: 1h
+        remoteSecretName: ENTEI_ONYX_KUBECONFIG
+        destination: "https://f88ac95c-d14a-4cdf-8e61-388baa2359d8.k8s.ondigitalocean.com"
+        deployAppSet: true
+        aoa:
+          enable: true
+          repo: https://github.com/AtomiCloud/sulfoxide.carbon
+          version: HEAD
+          path: chart
+          release: entei-onyx-carbon
+          values: [ "values.yaml", "values.entei.onyx.yaml" ]

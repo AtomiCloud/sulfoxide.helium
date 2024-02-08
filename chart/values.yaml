@@ -145,6 +145,23 @@ sso:
       # -- Deletion policy
       deletion: Retain
 
+# -- ApplicationSets for L2 Applications
+radon:
+  # -- Enable ApplicationSets for L2 Applications
+  enable: true
+  # -- App name of the App of ApplicationSets
+  appName: radon
+  # -- Release name for Radon
+  releaseName: radon
+  # -- Radon helm chart repository
+  repoURL: https://github.com/AtomiCloud/sulfoxide.radon
+  # -- Version for Radon to deploy
+  targetRevision: HEAD
+  # -- Path in the repository that poitns to the helm chart
+  path: chart
+  # -- values to use for the helm chart
+  values: [ "values.yaml", "values.entei.opal-ruby.yaml" ]
+
 # -- Connectors to other cluster
 connector:
   secretStore:

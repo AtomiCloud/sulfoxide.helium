@@ -1,10 +1,8 @@
-{{- range $lk, $lv := .Values.connector.clusters }}
-{{- range $ck, $cv := $lv }}
-{{- if $cv.aoa.enable }}
+{{ if .Values.radon.enable }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ $lk }}-{{ $ck }}-carbon
+  name: {{ .Values.radon.appName }}
   annotations:
     {{- include "sulfoxide-helium.annotations" $ | nindent 4 }}
     "helm.sh/hook": post-install, post-upgrade
@@ -14,21 +12,15 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: {{ $cv.aoa.repo }}
-    targetRevision: {{ $cv.aoa.version }}
-    path: {{ $cv.aoa.path }}
+    repoURL: {{ .Values.radon.repoURL }}
+    targetRevision: {{ .Values.radon.targetRevision }}
+    path: {{ .Values.radon.path }}
     helm:
       ignoreMissingValueFiles: false
-      parameters:
-        - name: "destination"
-          value: {{ $cv.destination }}
-        - name: enableAppSet
-          value: "{{ $cv.deployAppSet }}"
       passCredentials: false
-      releaseName: {{ $cv.aoa.release }}
+      releaseName: {{ .Values.radon.releaseName }}
       skipCrds: false
-      valueFiles:
-        {{- toYaml $cv.aoa.values | nindent 8 }}
+      valueFiles: {{- .Values.radon.values | toYaml | nindent 8 }}
   destination:
     server: https://kubernetes.default.svc
     namespace: {{ $.Release.Namespace }}
@@ -50,8 +42,4 @@ spec:
         duration: 5s
         factor: 2
         maxDuration: 3m
-  revisionHistoryLimit: {{ $.Values.revisionLimit }}
-  {{- end }}
----
-{{- end }}
 {{- end }}

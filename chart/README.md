@@ -50,6 +50,14 @@ AtomiCloud's Deployment Platform via ArgoCD
 | kustomize | bool | `true` | Enable Kustomize Application |
 | otelAddress | string | `""` | OTEL Collector Endpoint |
 | projects | object | `{"bootstrap":{"desc":"Bootstrap Project used to setup the cluster"}}` | Projects to create in ArgoCD |
+| radon | object | `{"appName":"radon","enable":true,"path":"chart","releaseName":"radon","repoURL":"https://github.com/AtomiCloud/sulfoxide.radon","targetRevision":"HEAD","values":["values.yaml","values.entei.opal-ruby.yaml"]}` | ApplicationSets for L2 Applications |
+| radon.appName | string | `"radon"` | App name of the App of ApplicationSets |
+| radon.enable | bool | `true` | Enable ApplicationSets for L2 Applications |
+| radon.path | string | `"chart"` | Path in the repository that poitns to the helm chart |
+| radon.releaseName | string | `"radon"` | Release name for Radon |
+| radon.repoURL | string | `"https://github.com/AtomiCloud/sulfoxide.radon"` | Radon helm chart repository |
+| radon.targetRevision | string | `"HEAD"` | Version for Radon to deploy |
+| radon.values | list | `["values.yaml","values.entei.opal-ruby.yaml"]` | values to use for the helm chart |
 | rbac | object | `{"clientID":"","enable":true,"group":"https://atomi.cloud/roles","issuer":"https://atomicloud-internal.jp.auth0.com/","name":"Atomi","requestedScopes":["openid","profile","email","https://atomi.cloud/roles"]}` | RBAC Setup |
 | rbac.clientID | string | `""` | Client ID for OIDC |
 | rbac.enable | bool | `true` | Enable of RBAC |

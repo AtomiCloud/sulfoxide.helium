@@ -8,6 +8,13 @@ tasks:
       LANDSCAPE: entei
     cmds:
       - ./scripts/local/update-kubectl.sh
+  entei:onyx:
+    desc: Obtain Entei Onyx Virtual Cluster KubeConfigs
+    env:
+      CLUSTER: onyx
+      LANDSCAPE: entei
+    cmds:
+      - ./scripts/local/update-kubectl.sh
   entei:ruby:
     desc: Obtain Entei Ruby Virtual Cluster KubeConfigs
     env:

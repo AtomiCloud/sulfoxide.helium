@@ -72,10 +72,10 @@ connector:
       opal:
         refreshInterval: 1h
         remoteSecretName: ENTEI_OPAL_KUBECONFIG
-        destination: "https://f88ac95c-d14a-4cdf-8e61-388baa2359d8.k8s.ondigitalocean.com"
-        deployAppSet: true
+        destination: "https://6d009d8e-655d-4536-aa0a-b5abd515b1ea.k8s.ondigitalocean.com"
+        deployAppSet: false
         aoa:
-          enable: true
+          enable: false
           repo: https://github.com/AtomiCloud/sulfoxide.carbon
           version: HEAD
           path: chart
@@ -84,10 +84,10 @@ connector:
       onyx:
         refreshInterval: 1h
         remoteSecretName: ENTEI_ONYX_KUBECONFIG
-        destination: "https://f88ac95c-d14a-4cdf-8e61-388baa2359d8.k8s.ondigitalocean.com"
-        deployAppSet: true
+        destination: "https://CA529DC636C1CB84B2A643034051AE1F.gr7.ap-southeast-1.eks.amazonaws.com"
+        deployAppSet: false
         aoa:
-          enable: true
+          enable: false
           repo: https://github.com/AtomiCloud/sulfoxide.carbon
           version: HEAD
           path: chart

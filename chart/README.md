@@ -8,8 +8,8 @@ AtomiCloud's Deployment Platform via ArgoCD
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://argoproj.github.io/argo-helm | argo-cd | 5.51.2 |
-| oci://ghcr.io/atomicloud/sulfoxide.bromine | sulfoxide-bromine | 1.2.3 |
+| https://argoproj.github.io/argo-helm | argo-cd | 7.4.2 |
+| oci://ghcr.io/atomicloud/sulfoxide.bromine | sulfoxide-bromine | 1.5.1 |
 
 ## Values
 
@@ -19,16 +19,16 @@ AtomiCloud's Deployment Platform via ArgoCD
 | applicationWait | bool | `true` | Enable waiting in sync-waves |
 | argo-cd | object | `{"configs":{"cm":{"create":false},"params":{"create":false},"rbac":{"create":false}},"dex":{"enabled":false},"global":{"logging":{"format":"json","level":"info"}}}` | ArgoCD Specific configuration. See [ArgoCD Helm Documentation](https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd) |
 | banner | string | `""` | Banner to show in ArgoCD UI |
-| connector | object | `{"clusters":{},"policy":{"creation":"Owner","deletion":"Retain"},"secretStore":{"kind":"SecretStore","name":"doppler"}}` | Connectors to other cluster |
+| connector | object | `{"clusters":{},"policy":{"creation":"Owner","deletion":"Retain"},"secretStore":{"kind":"SecretStore","name":"helium"}}` | Connectors to other cluster |
 | connector.clusters | object | `{}` | Clusters to connect to |
 | connector.policy | object | `{"creation":"Owner","deletion":"Retain"}` | External Secret Policy |
 | connector.policy.creation | string | `"Owner"` | Creation policy |
 | connector.policy.deletion | string | `"Retain"` | Deletion policy |
 | connector.secretStore.kind | string | `"SecretStore"` | Kind of the Secret Store: `ClusterSecretStore` or `SecretStore` |
-| connector.secretStore.name | string | `"doppler"` | Name of the Secret Store |
+| connector.secretStore.name | string | `"helium"` | Name of the Secret Store |
 | exec | bool | `true` | Enable Exec in ArgoCD |
-| github | object | `{"external":{"enable":true,"passwordRef":"","policy":{"creation":"Owner","deletion":"Retain"},"refreshInterval":"1h","secretStore":{"kind":"SecretStore","name":"doppler"},"usernameRef":""},"internal":{"enable":false,"password":"","username":""},"secretName":"argo-cd-creds","type":"","url":""}` | GitHub Auth Setup |
-| github.external | object | `{"enable":true,"passwordRef":"","policy":{"creation":"Owner","deletion":"Retain"},"refreshInterval":"1h","secretStore":{"kind":"SecretStore","name":"doppler"},"usernameRef":""}` | External Secrets |
+| github | object | `{"external":{"enable":true,"passwordRef":"","policy":{"creation":"Owner","deletion":"Retain"},"refreshInterval":"1h","secretStore":{"kind":"SecretStore","name":"helium"},"usernameRef":""},"internal":{"enable":false,"password":"","username":""},"secretName":"argo-cd-creds","type":"","url":""}` | GitHub Auth Setup |
+| github.external | object | `{"enable":true,"passwordRef":"","policy":{"creation":"Owner","deletion":"Retain"},"refreshInterval":"1h","secretStore":{"kind":"SecretStore","name":"helium"},"usernameRef":""}` | External Secrets |
 | github.external.enable | bool | `true` | Enable External Secrets |
 | github.external.passwordRef | string | `""` | Password Remote Reference |
 | github.external.policy | object | `{"creation":"Owner","deletion":"Retain"}` | External Secret Policy |
@@ -36,7 +36,7 @@ AtomiCloud's Deployment Platform via ArgoCD
 | github.external.policy.deletion | string | `"Retain"` | Deletion Policy |
 | github.external.refreshInterval | string | `"1h"` | Refresh Interval for fetching the secret from remote |
 | github.external.secretStore.kind | string | `"SecretStore"` | Kind of the Secret Store: `ClusterSecretStore` or `SecretStore` |
-| github.external.secretStore.name | string | `"doppler"` | Name of the Secret Store |
+| github.external.secretStore.name | string | `"helium"` | Name of the Secret Store |
 | github.external.usernameRef | string | `""` | Username Remote Reference |
 | github.internal | object | `{"enable":false,"password":"","username":""}` | Internal Secret, Hard coded secrets |
 | github.internal.enable | bool | `false` | Enable Internal Secret |
@@ -66,8 +66,8 @@ AtomiCloud's Deployment Platform via ArgoCD
 | rbac.name | string | `"Atomi"` | Name of the OIDC Provider |
 | rbac.requestedScopes | list | `["openid","profile","email","https://atomi.cloud/roles"]` | Scopes to request from OIDC |
 | serviceTree | object | `{"layer":"1","platform":"sulfoxide","service":"chlorine"}` | AtomiCloud Service Tree. See [ServiceTree](https://atomicloud.larksuite.com/wiki/OkfJwTXGFiMJkrk6W3RuwRrZs64?theme=DARK&contentTheme=DARK#MHw5d76uDo2tBLx86cduFQMRsBb) |
-| sso | object | `{"external":{"enable":true,"policy":{"creation":"Owner","deletion":"Retain"},"refreshInterval":"1h","remoteSecretName":"","secretStore":{"kind":"ClusterStore","name":"doppler"}},"internal":{"enable":false,"secret":""},"secretName":"argo-cd-sso-secret"}` | SSO Secret using OIDC |
-| sso.external | object | `{"enable":true,"policy":{"creation":"Owner","deletion":"Retain"},"refreshInterval":"1h","remoteSecretName":"","secretStore":{"kind":"ClusterStore","name":"doppler"}}` | External Secret Configuration |
+| sso | object | `{"external":{"enable":true,"policy":{"creation":"Owner","deletion":"Retain"},"refreshInterval":"1h","remoteSecretName":"","secretStore":{"kind":"ClusterStore","name":"helium"}},"internal":{"enable":false,"secret":""},"secretName":"argo-cd-sso-secret"}` | SSO Secret using OIDC |
+| sso.external | object | `{"enable":true,"policy":{"creation":"Owner","deletion":"Retain"},"refreshInterval":"1h","remoteSecretName":"","secretStore":{"kind":"ClusterStore","name":"helium"}}` | External Secret Configuration |
 | sso.external.enable | bool | `true` | Enable External Secret |
 | sso.external.policy | object | `{"creation":"Owner","deletion":"Retain"}` | External Secret Policy |
 | sso.external.policy.creation | string | `"Owner"` | Creation policy |
@@ -75,16 +75,16 @@ AtomiCloud's Deployment Platform via ArgoCD
 | sso.external.refreshInterval | string | `"1h"` | Refresh Interval for fetching the secret from remote |
 | sso.external.remoteSecretName | string | `""` | Secret Remote Reference for OIDC Client Secret |
 | sso.external.secretStore.kind | string | `"ClusterStore"` | Kind of the Secret Store: `ClusterSecretStore` or `SecretStore` |
-| sso.external.secretStore.name | string | `"doppler"` | Name of the Secret Store |
+| sso.external.secretStore.name | string | `"helium"` | Name of the Secret Store |
 | sso.internal | object | `{"enable":false,"secret":""}` | Internal Secret, Hard coded secrets |
 | sso.internal.enable | bool | `false` | Enable Internal Secret |
 | sso.internal.secret | string | `""` | Secret for SSO |
 | sso.secretName | string | `"argo-cd-sso-secret"` | Secret Name of SSO Secret |
-| sulfoxide-bromine | object | `{"annotations":{"helm.sh/hook":"pre-install,pre-upgrade","helm.sh/weight":"-5"},"rootSecret":{"ref":"SULFOXIDE_HELIUM"},"storeName":"doppler"}` | Create SecretStore via secret of secrets pattern |
-| sulfoxide-bromine.rootSecret | object | `{"ref":"SULFOXIDE_HELIUM"}` | Secret of Secrets reference |
-| sulfoxide-bromine.rootSecret.ref | string | `"SULFOXIDE_HELIUM"` | DOPPLER Token Reference |
-| sulfoxide-bromine.storeName | string | `"doppler"` | Store name to create |
+| sulfoxide-bromine | object | `{"annotations":{"helm.sh/hook":"pre-install,pre-upgrade","helm.sh/weight":"-5"},"rootSecret":{"ref":{"clientId":"SULFOXIDE_HELIUM_CLIENT_ID","clientSecret":"SULFOXIDE_HELIUM_CLIENT_SECRET"}},"serviceTree":{"platform":"sulfoxide","service":"helium"},"storeName":"helium"}` | Create SecretStore via secret of secrets pattern |
+| sulfoxide-bromine.rootSecret | object | `{"ref":{"clientId":"SULFOXIDE_HELIUM_CLIENT_ID","clientSecret":"SULFOXIDE_HELIUM_CLIENT_SECRET"}}` | Secret of Secrets reference |
+| sulfoxide-bromine.rootSecret.ref | object | `{"clientId":"SULFOXIDE_HELIUM_CLIENT_ID","clientSecret":"SULFOXIDE_HELIUM_CLIENT_SECRET"}` | Infisical Token Reference |
+| sulfoxide-bromine.storeName | string | `"helium"` | Store name to create |
 | url | string | `"https://deploy.atomi.cloud"` | URL of ArgoCD endpoint |
 
 ----------------------------------------------
-Autogenerated from chart metadata using [helm-docs v1.11.1](https://github.com/norwoodj/helm-docs/releases/v1.11.1)
+Autogenerated from chart metadata using [helm-docs v1.14.2](https://github.com/norwoodj/helm-docs/releases/v1.14.2)

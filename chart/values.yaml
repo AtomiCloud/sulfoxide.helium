@@ -2,7 +2,7 @@
 serviceTree:
   platform: sulfoxide
   service: chlorine
-  layer:  "1"
+  layer: "1"
 
 # -- ArgoCD Specific configuration. See [ArgoCD Helm Documentation](https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd)
 argo-cd:
@@ -22,15 +22,21 @@ argo-cd:
 
 # -- Create SecretStore via secret of secrets pattern
 sulfoxide-bromine:
+
+  serviceTree:
+    platform: sulfoxide
+    service: helium
   annotations:
     helm.sh/hook: pre-install,pre-upgrade
     helm.sh/weight: "-5"
   # -- Store name to create
-  storeName: doppler
+  storeName: helium
   # -- Secret of Secrets reference
   rootSecret:
-    # -- DOPPLER Token Reference
-    ref: "SULFOXIDE_HELIUM"
+    # -- Infisical Token Reference
+    ref:
+      clientId: SULFOXIDE_HELIUM_CLIENT_ID
+      clientSecret: SULFOXIDE_HELIUM_CLIENT_SECRET
 
 # -- Enable Kustomize Application
 kustomize: true
@@ -105,7 +111,7 @@ github:
     passwordRef: ""
     secretStore:
       # -- Name of the Secret Store
-      name: doppler
+      name: helium
       # -- Kind of the Secret Store: `ClusterSecretStore` or `SecretStore`
       kind: SecretStore
     # -- External Secret Policy
@@ -135,7 +141,7 @@ sso:
     remoteSecretName: ""
     secretStore:
       # -- Name of the Secret Store
-      name: doppler
+      name: helium
       # -- Kind of the Secret Store: `ClusterSecretStore` or `SecretStore`
       kind: ClusterStore
     # -- External Secret Policy
@@ -166,7 +172,7 @@ radon:
 connector:
   secretStore:
     # -- Name of the Secret Store
-    name: doppler
+    name: helium
     # -- Kind of the Secret Store: `ClusterSecretStore` or `SecretStore`
     kind: SecretStore
   # -- External Secret Policy
@@ -176,7 +182,7 @@ connector:
     # -- Deletion policy
     deletion: Retain
   # -- Clusters to connect to
-  clusters: {}
+  clusters: { }
 #    pichu:
 #      opal:
 #        # -- refresh interval for fetching the secret from remote

@@ -14,6 +14,12 @@ projects:
 
 url: https://deploy.atomi.cloud
 
+sulfoxide-bromine:
+  serviceTree:
+    landscape: suicune
+    cluster: opal-ruby
+
+
 rbac:
   enable: true
   group: https://atomi.cloud/roles
@@ -35,15 +41,15 @@ github:
   external:
     enable: true
     refreshInterval: 1h
-    usernameRef: "MANUAL_GITHUB_USERNAME"
-    passwordRef: "MANUAL_GITHUB_PASSWORD"
+    usernameRef: "GITHUB_USERNAME"
+    passwordRef: "GITHUB_PASSWORD"
 
 sso:
   internal:
     enable: false
   external:
     enable: true
-    remoteSecretName: "MANUAL_AUTH0_CLIENT_SECRET"
+    remoteSecretName: "AUTH0_CLIENT_SECRET"
 
 radon:
   enable: true

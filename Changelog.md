@@ -1,3 +1,12 @@
+## [1.9.0](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.8.1...v1.9.0) (2024-08-11)
+
+
+### 🚀 New Features
+
+* full topaz compatibility ([d551dd1](https://github.com/AtomiCloud/sulfoxide.helium/commit/d551dd1ef19bcb145e8c8230fcb71517ca90de5c))
+* migrate to new infisical-based secrets system ([ee31960](https://github.com/AtomiCloud/sulfoxide.helium/commit/ee31960f5dd86d4cf7188e8285886686159d0e12))
+* upgrade actions to use namespace ([6cd87d0](https://github.com/AtomiCloud/sulfoxide.helium/commit/6cd87d01d31b2c617c8463930a17c10a9dc56076))
+
 ## [1.8.1](https://github.com/AtomiCloud/sulfoxide.helium/compare/v1.8.0...v1.8.1) (2024-02-08)
 
 

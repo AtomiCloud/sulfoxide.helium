@@ -1,6 +1,6 @@
 serviceTree:
-  landscape: suicune
-  cluster: opal-ruby
+  landscape: &landscape suicune
+  cluster: &cluster opal-ruby
 
 otelAddress: ""
 
@@ -16,9 +16,8 @@ url: https://deploy.atomi.cloud
 
 sulfoxide-bromine:
   serviceTree:
-    landscape: suicune
-    cluster: opal-ruby
-
+    landscape: *landscape
+    cluster: *cluster
 
 rbac:
   enable: true
@@ -63,39 +62,15 @@ radon:
 connector:
   clusters:
     entei:
-      ruby:
+      topaz:
         refreshInterval: 1h
-        remoteSecretName: ENTEI_RUBY_KUBECONFIG
-        destination: "https://8f57e499-104a-437a-a4cd-04be277aa46c.k8s.ondigitalocean.com"
-        deployAppSet: false
+        remoteSecretName: ENTEI_TOPAZ_KUBECONFIG
+        destination: "https://4381D9840A129A55B303CFB0A96B47FC.gr7.ap-southeast-1.eks.amazonaws.com"
+        deployAppSet: true
         aoa:
-          enable: false
+          enable: true
           repo: https://github.com/AtomiCloud/sulfoxide.carbon
           version: HEAD
           path: chart
-          release: entei-ruby-carbon
-          values: [ "values.yaml", "values.entei.ruby.yaml" ]
-      opal:
-        refreshInterval: 1h
-        remoteSecretName: ENTEI_OPAL_KUBECONFIG
-        destination: "https://6d009d8e-655d-4536-aa0a-b5abd515b1ea.k8s.ondigitalocean.com"
-        deployAppSet: false
-        aoa:
-          enable: false
-          repo: https://github.com/AtomiCloud/sulfoxide.carbon
-          version: HEAD
-          path: chart
-          release: entei-opal-carbon
-          values: [ "values.yaml", "values.entei.opal.yaml" ]
-      onyx:
-        refreshInterval: 1h
-        remoteSecretName: ENTEI_ONYX_KUBECONFIG
-        destination: "https://CA529DC636C1CB84B2A643034051AE1F.gr7.ap-southeast-1.eks.amazonaws.com"
-        deployAppSet: false
-        aoa:
-          enable: false
-          repo: https://github.com/AtomiCloud/sulfoxide.carbon
-          version: HEAD
-          path: chart
-          release: entei-onyx-carbon
-          values: [ "values.yaml", "values.entei.onyx.yaml" ]
+          release: entei-topaz-carbon
+          values: [ "values.yaml", "values.entei.topaz.yaml" ]

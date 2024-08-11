@@ -1,7 +1,7 @@
 # -- AtomiCloud Service Tree. See [ServiceTree](https://atomicloud.larksuite.com/wiki/OkfJwTXGFiMJkrk6W3RuwRrZs64?theme=DARK&contentTheme=DARK#MHw5d76uDo2tBLx86cduFQMRsBb)
 serviceTree:
-  platform: sulfoxide
-  service: chlorine
+  platform: &platform sulfoxide
+  service: &service chlorine
   layer: "1"
 
 # -- ArgoCD Specific configuration. See [ArgoCD Helm Documentation](https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd)
@@ -24,15 +24,16 @@ argo-cd:
 sulfoxide-bromine:
 
   serviceTree:
-    platform: sulfoxide
-    service: helium
+    platform: *platform
+    service: *service
   annotations:
     helm.sh/hook: pre-install,pre-upgrade
     helm.sh/weight: "-5"
   # -- Store name to create
-  storeName: helium
+  storeName: *service
   # -- Secret of Secrets reference
   rootSecret:
+    name: *service
     # -- Infisical Token Reference
     ref:
       clientId: SULFOXIDE_HELIUM_CLIENT_ID

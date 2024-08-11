@@ -80,10 +80,10 @@ AtomiCloud's Deployment Platform via ArgoCD
 | sso.internal.enable | bool | `false` | Enable Internal Secret |
 | sso.internal.secret | string | `""` | Secret for SSO |
 | sso.secretName | string | `"argo-cd-sso-secret"` | Secret Name of SSO Secret |
-| sulfoxide-bromine | object | `{"annotations":{"helm.sh/hook":"pre-install,pre-upgrade","helm.sh/weight":"-5"},"rootSecret":{"ref":{"clientId":"SULFOXIDE_HELIUM_CLIENT_ID","clientSecret":"SULFOXIDE_HELIUM_CLIENT_SECRET"}},"serviceTree":{"platform":"sulfoxide","service":"helium"},"storeName":"helium"}` | Create SecretStore via secret of secrets pattern |
-| sulfoxide-bromine.rootSecret | object | `{"ref":{"clientId":"SULFOXIDE_HELIUM_CLIENT_ID","clientSecret":"SULFOXIDE_HELIUM_CLIENT_SECRET"}}` | Secret of Secrets reference |
+| sulfoxide-bromine | object | `{"annotations":{"helm.sh/hook":"pre-install,pre-upgrade","helm.sh/weight":"-5"},"rootSecret":{"name":"chlorine","ref":{"clientId":"SULFOXIDE_HELIUM_CLIENT_ID","clientSecret":"SULFOXIDE_HELIUM_CLIENT_SECRET"}},"serviceTree":{"platform":"sulfoxide","service":"chlorine"},"storeName":"chlorine"}` | Create SecretStore via secret of secrets pattern |
+| sulfoxide-bromine.rootSecret | object | `{"name":"chlorine","ref":{"clientId":"SULFOXIDE_HELIUM_CLIENT_ID","clientSecret":"SULFOXIDE_HELIUM_CLIENT_SECRET"}}` | Secret of Secrets reference |
 | sulfoxide-bromine.rootSecret.ref | object | `{"clientId":"SULFOXIDE_HELIUM_CLIENT_ID","clientSecret":"SULFOXIDE_HELIUM_CLIENT_SECRET"}` | Infisical Token Reference |
-| sulfoxide-bromine.storeName | string | `"helium"` | Store name to create |
+| sulfoxide-bromine.storeName | string | `"chlorine"` | Store name to create |
 | url | string | `"https://deploy.atomi.cloud"` | URL of ArgoCD endpoint |
 
 ----------------------------------------------

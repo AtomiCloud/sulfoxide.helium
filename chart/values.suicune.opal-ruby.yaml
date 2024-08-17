@@ -65,7 +65,7 @@ connector:
       topaz:
         refreshInterval: 1h
         remoteSecretName: ENTEI_TOPAZ_KUBECONFIG
-        destination: "https://4381D9840A129A55B303CFB0A96B47FC.gr7.ap-southeast-1.eks.amazonaws.com"
+        destination: "https://00F8160426B765AC9C052A34F03DD639.gr7.ap-southeast-1.eks.amazonaws.com"
         deployAppSet: true
         aoa:
           enable: true

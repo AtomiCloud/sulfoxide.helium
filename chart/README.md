@@ -17,7 +17,7 @@ AtomiCloud's Deployment Platform via ArgoCD
 |-----|------|---------|-------------|
 | admin | bool | `true` | Enable Admin Access |
 | applicationWait | bool | `true` | Enable waiting in sync-waves |
-| argo-cd | object | `{"configs":{"cm":{"create":false},"params":{"create":false},"rbac":{"create":false}},"dex":{"enabled":false},"global":{"logging":{"format":"json","level":"info"}}}` | ArgoCD Specific configuration. See [ArgoCD Helm Documentation](https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd) |
+| argo-cd | object | `{"applicationSet":{"replicas":1},"configs":{"cm":{"create":false},"params":{"create":false},"rbac":{"create":false}},"controller":{"replicas":3,"resources":{"limits":{"cpu":"3000m","memory":"3000Mi"},"requests":{"cpu":"1500m","memory":"1500Mi"}}},"dex":{"enabled":false},"global":{"logging":{"format":"json","level":"info"}},"redis":{"resources":{"limits":{"cpu":"500m","memory":"512Mi"},"requests":{"cpu":"250m","memory":"256Mi"}}},"repoServer":{"replicas":2,"resources":{"limits":{"cpu":"1000m","memory":"1000Mi"},"requests":{"cpu":"500m","memory":"500Mi"}}},"server":{"replicas":2,"resources":{"limits":{"cpu":"500m","memory":"512Mi"},"requests":{"cpu":"250m","memory":"256Mi"}}}}` | ArgoCD Specific configuration. See [ArgoCD Helm Documentation](https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd) |
 | banner | string | `""` | Banner to show in ArgoCD UI |
 | connector | object | `{"clusters":{},"policy":{"creation":"Owner","deletion":"Retain"},"secretStore":{"kind":"SecretStore","name":"helium"}}` | Connectors to other cluster |
 | connector.clusters | object | `{}` | Clusters to connect to |

@@ -1,0 +1,138 @@
+serviceTree:
+  landscape: &landscape suicune
+
+projects:
+  bootstrap:
+    desc: Bootstrap Project used to setup the cluster
+  sulfone:
+    desc: CyanPrint - Next-generation scaffolding engine
+  nitroso:
+    desc: BunnyBooker - Bunnies to help you book KTM tickets
+
+url: https://deploy.atomi.cloud
+
+sulfoxide-bromine:
+  serviceTree:
+    landscape: *landscape
+
+rbac:
+  enable: true
+  group: https://atomi.cloud/roles
+  name: Atomi
+  issuer: https://atomicloud-internal.jp.auth0.com/
+  clientID: F27LbZI3AsD4mQCM3wWTkBquVGlqCRDr # infisical-scan:ignore
+  requestedScopes:
+    - openid
+    - profile
+    - email
+    - https://atomi.cloud/roles
+
+github:
+  secretName: argo-cd-creds
+  url: "https://github.com/AtomiCloud"
+  type: "helm"
+  internal:
+    enable: false
+  external:
+    enable: true
+    refreshInterval: 1h
+    usernameRef: "GITHUB_USERNAME"
+    passwordRef: "GITHUB_PASSWORD"
+
+sso:
+  internal:
+    enable: false
+  external:
+    enable: true
+    remoteSecretName: "AUTH0_CLIENT_SECRET"
+
+radon:
+  enable: true
+  appName: radon
+  releaseName: radon
+  repoURL: https://github.com/AtomiCloud/sulfoxide.radon
+  targetRevision: HEAD
+  path: chart
+  values: [ "values.yaml", "values.entei.opal-ruby.yaml" ]
+
+connector:
+  clusters:
+    entei:
+      topaz:
+        enable: false
+        refreshInterval: 1h
+        remoteSecretName: ENTEI_TOPAZ_KUBECONFIG
+        destination: ""
+        deployAppSet: false
+        aoa:
+          enable: false
+          repo: https://github.com/AtomiCloud/sulfoxide.carbon
+          version: HEAD
+          path: chart
+          release: entei-topaz-carbon
+          values: [ "values.yaml", "values.entei.topaz.yaml" ]
+      amber:
+        enable: false
+        refreshInterval: 1h
+        remoteSecretName: ENTEI_AMBER_KUBECONFIG
+        destination: "https://00F8160426B765AC9C052A34F03DD639.gr7.ap-southeast-1.eks.amazonaws.com"
+        deployAppSet: false
+        aoa:
+          enable: false
+          repo: https://github.com/AtomiCloud/sulfoxide.carbon
+          version: HEAD
+          path: chart
+          release: entei-amber-carbon
+          values: [ "values.yaml", "values.entei.amber.yaml" ]
+      opal:
+        enable: false
+        refreshInterval: 1h
+        remoteSecretName: ENTEI_OPAL_KUBECONFIG
+        destination: ""
+        deployAppSet: false
+        aoa:
+          enable: false
+          repo: https://github.com/AtomiCloud/sulfoxide.carbon
+          version: HEAD
+          path: chart
+          release: entei-opal-carbon
+          values: [ "values.yaml", "values.entei.opal.yaml" ]
+      ruby:
+        enable: true
+        refreshInterval: 1h
+        remoteSecretName: ENTEI_RUBY_KUBECONFIG
+        destination: "https://00cfcaba-7d46-4c8f-8760-75ee9c3fc965.k8s.ondigitalocean.com"
+        deployAppSet: true
+        aoa:
+          enable: true
+          repo: https://github.com/AtomiCloud/sulfoxide.carbon
+          version: HEAD
+          path: chart
+          release: entei-ruby-carbon
+          values: [ "values.yaml", "values.entei.ruby.yaml" ]
+      mica:
+        enable: false
+        refreshInterval: 1h
+        remoteSecretName: ENTEI_MICA_KUBECONFIG
+        destination: ""
+        deployAppSet: false
+        aoa:
+          enable: false
+          repo: https://github.com/AtomiCloud/sulfoxide.carbon
+          version: HEAD
+          path: chart
+          release: entei-mica-carbon
+          values: [ "values.yaml", "values.entei.mica.yaml" ]
+      talc:
+        enable: false
+        refreshInterval: 1h
+        remoteSecretName: ENTEI_TALC_KUBECONFIG
+        destination: ""
+        deployAppSet: false
+        aoa:
+          enable: false
+          repo: https://github.com/AtomiCloud/sulfoxide.carbon
+          version: HEAD
+          path: chart
+          release: entei-talc-carbon
+          values: [ "values.yaml", "values.entei.talc.yaml" ]

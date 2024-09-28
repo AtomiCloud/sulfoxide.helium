@@ -1,5 +1,6 @@
 {{- range $lk, $lv := .Values.connector.clusters }}
 {{- range $ck, $cv := $lv }}
+{{- if $cv.enable }}
 {{- if $cv.aoa.enable }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -53,5 +54,6 @@ spec:
   revisionHistoryLimit: {{ $.Values.revisionLimit }}
   {{- end }}
 ---
+{{- end }}
 {{- end }}
 {{- end }}

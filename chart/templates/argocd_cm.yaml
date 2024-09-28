@@ -34,6 +34,24 @@ data:
 
   resource.exclusions: |
     - apiGroups:
+        - cilium.io
+      kinds:
+        - CiliumEndpoint
+      clusters:
+        - '*'
+    - apiGroups:
+        - wgpolicyk8s.io
+      kinds:
+        - PolicyReport
+      clusters:
+        - '*'
+    - apiGroups:
+        - reports.kyverno.io
+      kinds:
+        - EphemeralReport
+      clusters:
+        - '*'
+    - apiGroups:
         - kyverno.io
       kinds:
         - AdmissionReport
@@ -62,3 +80,16 @@ data:
   server.rbac.log.enforce.enable: 'false'
   timeout.hard.reconciliation: 0s
   timeout.reconciliation: 180s
+  resource.ignoreResourceUpdatesEnabled: "true"
+  resource.customizations.ignoreResourceUpdates.argoproj.io_Application: |
+    jsonPointers:
+    - /status/reconciledAt
+  resource.customizations.ignoreResourceUpdates.reports.kyverno.io_EphemeralReport: |
+    jsonPointers:
+    - /status
+  resource.customizations.ignoreResourceUpdates.wgpolicyk8s.io_PolicyReport: |
+    jsonPointers:
+    - /status
+  resource.customizations.ignoreResourceUpdates.external-secrets.io_ExternalSecret: |
+    jsonPointers:
+    - /status/refreshTime

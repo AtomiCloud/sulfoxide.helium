@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 
 env:
   RELEASE_NAME: sulfoxide-helium
@@ -11,6 +11,11 @@ includes:
     vars:
       LANDSCAPE: suicune
       CLUSTER: opal-ruby
+  suicune:mica-talc:
+    taskfile: tasks/Taskfile.cluster.yaml
+    vars:
+      LANDSCAPE: suicune
+      CLUSTER: mica-talc
 
 tasks:
   # Utility

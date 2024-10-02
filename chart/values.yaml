@@ -2,19 +2,19 @@
 serviceTree:
   platform: &platform sulfoxide
   service: &service chlorine
-  layer: "1"
+  layer: '1'
 
 # -- ArgoCD Specific configuration. See [ArgoCD Helm Documentation](https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd)
 argo-cd:
   controller:
-    replicas: 3
+    replicas: 2
     resources:
       limits:
-        cpu: 3000m
-        memory: 3000Mi
+        cpu: 1000m
+        memory: 1000Mi
       requests:
-        cpu: 1500m
-        memory: 1500Mi
+        cpu: 500m
+        memory: 500Mi
   applicationSet:
     replicas: 1
   redis:
@@ -59,13 +59,12 @@ argo-cd:
 
 # -- Create SecretStore via secret of secrets pattern
 sulfoxide-bromine:
-
   serviceTree:
     platform: *platform
     service: *service
   annotations:
     helm.sh/hook: pre-install,pre-upgrade
-    helm.sh/weight: "-5"
+    helm.sh/weight: '-5'
   # -- Store name to create
   storeName: *service
   # -- Secret of Secrets reference
@@ -89,10 +88,10 @@ exec: true
 # -- Enable waiting in sync-waves
 applicationWait: true
 # -- Banner to show in ArgoCD UI
-banner: ""
+banner: ''
 
 # -- OTEL Collector Endpoint
-otelAddress: ""
+otelAddress: ''
 
 # -- Projects to create in ArgoCD
 projects:
@@ -113,7 +112,7 @@ rbac:
   # -- Name of OIDC Issuer
   issuer: https://atomicloud-internal.jp.auth0.com/
   # -- Client ID for OIDC
-  clientID: ""
+  clientID: ''
   # -- Scopes to request from OIDC
   requestedScopes:
     - openid
@@ -126,17 +125,17 @@ github:
   # -- Secret name of Github Auth
   secretName: argo-cd-creds
   # -- ArgoCD Credential Type
-  url: ""
+  url: ''
   # -- ArgoCD Credential Type
-  type: ""
+  type: ''
   # -- Internal Secret, Hard coded secrets
   internal:
     # -- Enable Internal Secret
     enable: false
     # -- Username for Github Auth
-    username: ""
+    username: ''
     # -- Password for Github Auth
-    password: ""
+    password: ''
   # -- External Secrets
   external:
     # -- Enable External Secrets
@@ -144,9 +143,9 @@ github:
     # -- Refresh Interval for fetching the secret from remote
     refreshInterval: 1h
     # -- Username Remote Reference
-    usernameRef: ""
+    usernameRef: ''
     # -- Password Remote Reference
-    passwordRef: ""
+    passwordRef: ''
     secretStore:
       # -- Name of the Secret Store
       name: helium
@@ -168,7 +167,7 @@ sso:
     # -- Enable Internal Secret
     enable: false
     # -- Secret for SSO
-    secret: ""
+    secret: ''
   # -- External Secret Configuration
   external:
     # -- Enable External Secret
@@ -176,7 +175,7 @@ sso:
     # -- Refresh Interval for fetching the secret from remote
     refreshInterval: 1h
     # -- Secret Remote Reference for OIDC Client Secret
-    remoteSecretName: ""
+    remoteSecretName: ''
     secretStore:
       # -- Name of the Secret Store
       name: helium
@@ -204,7 +203,7 @@ radon:
   # -- Path in the repository that poitns to the helm chart
   path: chart
   # -- values to use for the helm chart
-  values: [ "values.yaml", "values.entei.opal-ruby.yaml" ]
+  values: ['values.yaml', 'values.entei.opal-ruby.yaml']
 
 # -- Connectors to other cluster
 connector:
@@ -220,7 +219,7 @@ connector:
     # -- Deletion policy
     deletion: Retain
   # -- Clusters to connect to
-  clusters: { }
+  clusters: {}
 #    pichu:
 #      opal:
 #        # -- refresh interval for fetching the secret from remote

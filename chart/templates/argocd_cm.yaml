@@ -81,6 +81,9 @@ data:
   timeout.hard.reconciliation: 0s
   timeout.reconciliation: 180s
   resource.ignoreResourceUpdatesEnabled: "true"
+  resource.customizations.ignoreResourceUpdates.argoproj.io_ApplicationSet: |
+    jsonPointers:
+    - /status/resources
   resource.customizations.ignoreResourceUpdates.argoproj.io_Application: |
     jsonPointers:
     - /status/reconciledAt

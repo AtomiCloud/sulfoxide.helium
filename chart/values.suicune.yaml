@@ -53,7 +53,7 @@ radon:
   repoURL: https://github.com/AtomiCloud/sulfoxide.radon
   targetRevision: HEAD
   path: chart
-  values: ['values.yaml', 'values.entei.opal-ruby.yaml']
+  values: [ 'values.yaml', 'values.entei.opal-ruby.yaml' ]
 
 connector:
   clusters:
@@ -70,7 +70,7 @@ connector:
           version: HEAD
           path: chart
           release: entei-topaz-carbon
-          values: ['values.yaml', 'values.entei.topaz.yaml']
+          values: [ 'values.yaml', 'values.entei.topaz.yaml' ]
       amber:
         enable: false
         refreshInterval: 1h
@@ -83,7 +83,7 @@ connector:
           version: HEAD
           path: chart
           release: entei-amber-carbon
-          values: ['values.yaml', 'values.entei.amber.yaml']
+          values: [ 'values.yaml', 'values.entei.amber.yaml' ]
       opal:
         enable: false
         refreshInterval: 1h
@@ -96,24 +96,11 @@ connector:
           version: HEAD
           path: chart
           release: entei-opal-carbon
-          values: ['values.yaml', 'values.entei.opal.yaml']
+          values: [ 'values.yaml', 'values.entei.opal.yaml' ]
       ruby:
-        enable: true
-        refreshInterval: 1h
-        remoteSecretName: ENTEI_RUBY_KUBECONFIG
-        destination: 'https://00cfcaba-7d46-4c8f-8760-75ee9c3fc965.k8s.ondigitalocean.com'
-        deployAppSet: true
-        aoa:
-          enable: true
-          repo: https://github.com/AtomiCloud/sulfoxide.carbon
-          version: HEAD
-          path: chart
-          release: entei-ruby-carbon
-          values: ['values.yaml', 'values.entei.ruby.yaml']
-      mica:
         enable: false
         refreshInterval: 1h
-        remoteSecretName: ENTEI_MICA_KUBECONFIG
+        remoteSecretName: ENTEI_RUBY_KUBECONFIG
         destination: ''
         deployAppSet: false
         aoa:
@@ -121,8 +108,21 @@ connector:
           repo: https://github.com/AtomiCloud/sulfoxide.carbon
           version: HEAD
           path: chart
+          release: entei-ruby-carbon
+          values: [ 'values.yaml', 'values.entei.ruby.yaml' ]
+      mica:
+        enable: true
+        refreshInterval: 1h
+        remoteSecretName: ENTEI_MICA_KUBECONFIG
+        destination: 'https://eb519879-ce0e-4d5d-94d9-dc752028cabd.vultr-k8s.com:6443'
+        deployAppSet: true
+        aoa:
+          enable: true
+          repo: https://github.com/AtomiCloud/sulfoxide.carbon
+          version: HEAD
+          path: chart
           release: entei-mica-carbon
-          values: ['values.yaml', 'values.entei.mica.yaml']
+          values: [ 'values.yaml', 'values.entei.mica.yaml' ]
       talc:
         enable: false
         refreshInterval: 1h
@@ -135,4 +135,4 @@ connector:
           version: HEAD
           path: chart
           release: entei-talc-carbon
-          values: ['values.yaml', 'values.entei.talc.yaml']
+          values: [ 'values.yaml', 'values.entei.talc.yaml' ]

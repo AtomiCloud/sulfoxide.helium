@@ -23,7 +23,12 @@ tasks:
     cmds:
       - helm dependency update
       - helm upgrade --install $RELEASE_NAME . --wait --cleanup-on-fail --values values.yaml --values values.{{.LANDSCAPE}}.yaml --values values.{{.LANDSCAPE}}.{{.CLUSTER}}.yaml {{.CLI_ARGS}}
-
+  install-sync:
+    desc: Installs the chart with sync enabled
+    dir: chart
+    cmds:
+      - helm dependency update
+      - helm upgrade --install $RELEASE_NAME . --wait --cleanup-on-fail --values values.sync.yaml --values values.{{.LANDSCAPE}}.yaml --values values.{{.LANDSCAPE}}.{{.CLUSTER}}.yaml --set argo-cd.controller.sync.enabled=true {{.CLI_ARGS}}
   remove:
     desc: Removes an installed release
     cmds:

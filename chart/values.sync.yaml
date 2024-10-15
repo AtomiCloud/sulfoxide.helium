@@ -7,14 +7,14 @@ serviceTree:
 # -- ArgoCD Specific configuration. See [ArgoCD Helm Documentation](https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd)
 argo-cd:
   controller:
-    replicas: 1
+    replicas: 3
     resources:
       limits:
         cpu: 1800m
-        memory: 2Gi
+        memory: 2000Mi
       requests:
-        cpu: 900m
-        memory: 1Gi
+        cpu: 1800m
+        memory: 2000Mi
   applicationSet:
     replicas: 1
   redis:

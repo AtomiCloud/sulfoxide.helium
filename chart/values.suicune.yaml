@@ -85,13 +85,13 @@ connector:
           release: entei-amber-carbon
           values: [ 'values.yaml', 'values.entei.amber.yaml' ]
       opal:
-        enable: false
+        enable: true
         refreshInterval: 1h
         remoteSecretName: ENTEI_OPAL_KUBECONFIG
-        destination: ''
-        deployAppSet: false
+        destination: 'https://7ec6ded7-12ea-4402-ae85-de6b7f79bd03.k8s.ondigitalocean.com'
+        deployAppSet: true
         aoa:
-          enable: false
+          enable: true
           repo: https://github.com/AtomiCloud/sulfoxide.carbon
           version: HEAD
           path: chart
@@ -111,13 +111,13 @@ connector:
           release: entei-ruby-carbon
           values: [ 'values.yaml', 'values.entei.ruby.yaml' ]
       mica:
-        enable: true
+        enable: false
         refreshInterval: 1h
         remoteSecretName: ENTEI_MICA_KUBECONFIG
-        destination: 'https://eb519879-ce0e-4d5d-94d9-dc752028cabd.vultr-k8s.com:6443'
-        deployAppSet: true
+        destination: ''
+        deployAppSet: false
         aoa:
-          enable: true
+          enable: false
           repo: https://github.com/AtomiCloud/sulfoxide.carbon
           version: HEAD
           path: chart

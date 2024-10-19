@@ -11,10 +11,10 @@ argo-cd:
     resources:
       limits:
         cpu: 1800m
-        memory: 2000Mi
+        memory: 3Gi
       requests:
         cpu: 1800m
-        memory: 2000Mi
+        memory: 3Gi
   applicationSet:
     replicas: 1
   redis:
@@ -86,7 +86,7 @@ admin: true
 # -- Enable Exec in ArgoCD
 exec: true
 # -- Enable waiting in sync-waves
-applicationWait: false
+applicationWait: true
 # -- Banner to show in ArgoCD UI
 banner: ''
 

@@ -59,13 +59,13 @@ connector:
   clusters:
     entei:
       topaz:
-        enable: false
+        enable: true
         refreshInterval: 1h
         remoteSecretName: ENTEI_TOPAZ_KUBECONFIG
-        destination: ''
-        deployAppSet: false
+        destination: 'https://EBD6CC06B26DD9C09CC19667B03036B3.gr7.ap-southeast-1.eks.amazonaws.com'
+        deployAppSet: true
         aoa:
-          enable: false
+          enable: true
           repo: https://github.com/AtomiCloud/sulfoxide.carbon
           version: HEAD
           path: chart
@@ -85,13 +85,13 @@ connector:
           release: entei-amber-carbon
           values: [ 'values.yaml', 'values.entei.amber.yaml' ]
       opal:
-        enable: true
+        enable: false
         refreshInterval: 1h
         remoteSecretName: ENTEI_OPAL_KUBECONFIG
-        destination: 'https://7ec6ded7-12ea-4402-ae85-de6b7f79bd03.k8s.ondigitalocean.com'
-        deployAppSet: true
+        destination: ''
+        deployAppSet: false
         aoa:
-          enable: true
+          enable: false
           repo: https://github.com/AtomiCloud/sulfoxide.carbon
           version: HEAD
           path: chart
